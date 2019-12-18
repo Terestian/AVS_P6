@@ -13,7 +13,7 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
     public WorkerThread (KraftwerkPanel kwp, Kraftwerk kw)
     {
     	this.kwp = kwp;
-    	this.kw = kw; 
+    	this.kw = kw;  
     }
 
     @Override
