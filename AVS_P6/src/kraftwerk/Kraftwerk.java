@@ -2,7 +2,7 @@ package kraftwerk;
 
 public class Kraftwerk
 {
-	private double gesamtLeistung, nennleistung, leistung;
+	private int gesamtLeistung, nennleistung, leistung;
 	private String name, standort, kraftwerktype;
 
 	public Kraftwerk(String name, String standort, String kraftwerktype, double nennleistung){
@@ -15,7 +15,7 @@ public class Kraftwerk
 	
 	}
 	
-	public double energieErzeugt(){
+	public int energieErzeugt(){
 		return gesamtLeistung;
 	}
 	
@@ -24,8 +24,12 @@ public class Kraftwerk
 	* @return Nennleistung in MW, 0 falls ausgeschaltet
 	*/
 	
-	public double getNennleistungOn(){
+	public int getNennleistungOn(){
 		return nennleistung;
+	}
+	
+	public void setLeistung(int leistung) {
+		this.leistung = leistung;
 	}
 	
 	/**
