@@ -17,13 +17,6 @@ public class Kraftwerk
 		leistung = 0;
 	
 	}
-
-	
-	
-	/**
-	* abstrakte Methode energieErzeugt 
-	* @return  erzeugte Energie pro Zeiteinheit in MWh
-	*/
 	
 	public double energieErzeugt(){
 		return gesamtLeistung;
