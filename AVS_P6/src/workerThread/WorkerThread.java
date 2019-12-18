@@ -4,14 +4,15 @@ import java.lang.Math;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 
+import gui.KraftwerkPanel;
 import kraftwerk.Kraftwerk;
 
 public class WorkerThread extends SwingWorker<Integer, Integer>{
-	private JLabel label;
+	private KraftwerkPanel kwp;
 	private Kraftwerk kw; 
-    public WorkerThread (JLabel label, Kraftwerk kw)
+    public WorkerThread (KraftwerkPanel kwp, Kraftwerk kw)
     {
-    	this.label = label;
+    	this.kwp = kwp;
     	this.kw = kw; 
     }
 
@@ -41,7 +42,7 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
     {
         // Für jedes einzelne Zwischenergebnis aus der Liste.
     	for (Integer cp : currentPower) {
-    		label.setText(cp.toString());
+    		kwp.setLeistung(cp.toString());
 		}
     }
 }

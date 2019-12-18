@@ -31,27 +31,9 @@ public class Gui {
     }
 
     private static void addWorker(final int i, Kraftwerk kw, JFrame frame){
-        final JLabel label = new JLabel ("0");
-        
-        JButton start = new JButton ("Start " + (i+1));
-        start.addActionListener (new ActionListener()
-            {
-                public void actionPerformed (ActionEvent action)
-                {
-                    worker[i] = new WorkerThread(label, kw);
-                    worker[i].execute();
-                }
-            });
-        JButton stop = new JButton ("Stopp "+(i+1));
-        stop.addActionListener (new ActionListener()
-            {
-                public void actionPerformed (ActionEvent action)
-                {
-                    worker[i].cancel (true);
-                }
-            });
-        frame.add (start);
-        frame.add (stop);
-        frame.add (label);
+        KraftwerkPanel kwp = new KraftwerkPanel(kw);
+        worker[i] = new WorkerThread(kwp, kw);
+        worker[i].execute();
+        frame.add (kwp);
     }
 }
