@@ -6,25 +6,24 @@ import javax.swing.SwingWorker;
 
 import gui.KraftwerkPanel;
 
-public class Kraftwerk extends SwingWorker<Integer, Integer>
+public class Kraftwerk extends SwingWorker<Integer, Double[]>
 {
 	private KraftwerkPanel kwp;
-	private Kraftwerk kw; 
-	private int gesamtLeistung, nennleistung, leistung;
+	private Double gesamtLeistung, nennleistung, leistung;
 	private String name, standort, kraftwerktype;
 
-	public Kraftwerk(String name, String standort, String kraftwerktype, int nennleistung){
+	public Kraftwerk(String name, String standort, String kraftwerktype, Double nennleistung){
 		
 		this.name = name; 
 		this.standort = standort;
 		this.kraftwerktype = kraftwerktype;
 		this.nennleistung = nennleistung;
-        this.execute();
-		leistung = 0;
-	
+       
+		leistung = 0.0;
+		this.execute();
 	}
 	
-	public int getEnergieErzeugt(){
+	public Double getEnergieErzeugt(){
 		return gesamtLeistung;
 	}
 	
@@ -33,11 +32,11 @@ public class Kraftwerk extends SwingWorker<Integer, Integer>
 	* @return Nennleistung in MW, 0 falls ausgeschaltet
 	*/
 	
-	public int getNennleistungOn(){
+	public Double getNennleistungOn(){
 		return nennleistung;
 	}
 	
-	public void setLeistung(int leistung) {
+	public void setLeistung(Double leistung) {
 		this.leistung = leistung;
 		gesamtLeistung = leistung + gesamtLeistung;
 	}
@@ -63,7 +62,7 @@ public class Kraftwerk extends SwingWorker<Integer, Integer>
 	* @return Leistung in MW, 0 falls ausgeschaltet
 	*/
 	
-	public int getLeistung(){
+	public Double getLeistung(){
 		return leistung;
 	}
 	
@@ -91,20 +90,23 @@ public class Kraftwerk extends SwingWorker<Integer, Integer>
             {
             	
             }
+            Double values[] = new Double[2];
             // Zwischenergebnis bereitstellen.
-            kw.setLeistung( (int) (((10 - Math.random()) / 10) * kw.getNennleistungOn()));
-            publish (kw.getLeistung());
+            setLeistung((((10 - Math.random()) / 10) * nennleistung));
+            values[0] = getLeistung();
+            values[1] = getEnergieErzeugt();
+            publish (values);
         }
         return counter;
     }
 
 	
     // Wird vom Event-Dispatch-Thread aufgerufen.
-    protected void process (List<Integer> currentPower)
+    protected void process (List<Double[]> currentPower)
     {
         // Für jedes einzelne Zwischenergebnis aus der Liste.
-    	for (Integer cp : currentPower) {
-    		kwp.setLeistung(cp.toString());
+    	for (Double[] cp : currentPower) {
+    		kwp.setLeistung(cp[0].toString());
 		}
     }
 	
