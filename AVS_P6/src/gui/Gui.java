@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+
+import workerThread.WorkerThread;
+
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
