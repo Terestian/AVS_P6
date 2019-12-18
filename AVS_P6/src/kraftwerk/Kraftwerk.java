@@ -30,6 +30,7 @@ public class Kraftwerk
 	
 	public void setLeistung(int leistung) {
 		this.leistung = leistung;
+		gesamtLeistung = leistung + gesamtLeistung;
 	}
 	
 	/**
