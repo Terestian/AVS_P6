@@ -31,8 +31,8 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
             	
             }
             // Zwischenergebnis bereitstellen.
-            Integer currentPower = (int) (Math.random() * kw.getNennleistungOn());
-            publish (currentPower);
+            kw.setLeistung( (int) (Math.random() * kw.getNennleistungOn()));
+            publish (kw.getLeistung());
         }
         return counter;
     }

@@ -5,7 +5,7 @@ public class Kraftwerk
 	private int gesamtLeistung, nennleistung, leistung;
 	private String name, standort, kraftwerktype;
 
-	public Kraftwerk(String name, String standort, String kraftwerktype, double nennleistung){
+	public Kraftwerk(String name, String standort, String kraftwerktype, int nennleistung){
 		
 		this.name = name; 
 		this.standort = standort;
@@ -53,7 +53,7 @@ public class Kraftwerk
 	* @return Leistung in MW, 0 falls ausgeschaltet
 	*/
 	
-	public double getLeistung(){
+	public int getLeistung(){
 		return leistung;
 	}
 	
