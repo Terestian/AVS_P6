@@ -36,6 +36,7 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
         for (Integer zwischenergebnis : zwischenergebnisse)
         {
             label.setText (zwischenergebnis.toString());
+            
         }
     }
 }
