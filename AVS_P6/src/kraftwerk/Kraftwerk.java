@@ -38,7 +38,7 @@ public class Kraftwerk
 	 * @return name of kw
 	 */
 	public String getName() {
-		return name;
+		return name; 
 	}
 	
 	/**
