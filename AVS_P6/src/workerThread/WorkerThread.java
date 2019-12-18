@@ -4,11 +4,15 @@ import java.lang.Math;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 
+import kraftwerk.Kraftwerk;
+
 public class WorkerThread extends SwingWorker<Integer, Integer>{
 	private JLabel label;
-    public WorkerThread (JLabel label)
+	private Kraftwerk kw; 
+    public WorkerThread (JLabel label, Kraftwerk kw)
     {
     	this.label = label;
+    	this.kw = kw; 
     }
 
     @Override
@@ -27,18 +31,17 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
             	
             }
             // Zwischenergebnis bereitstellen.
-            publish (++counter);
+            Integer currentPower = (int) (Math.random() * kw.getNennleistungOn());
+            publish (currentPower);
         }
         return counter;
     }
     // Wird vom Event-Dispatch-Thread aufgerufen.
-    protected void process (List<Integer> zwischenergebnisse)
+    protected void process (List<Integer> currentPower)
     {
         // Für jedes einzelne Zwischenergebnis aus der Liste.
-        for (Integer zwischenergebnis : zwischenergebnisse)
-        {
-            label.setText(zwischenergebnis.toString());
-            
-        }
+    	for (Integer cp : currentPower) {
+    		label.setText(cp.toString());
+		}
     }
 }

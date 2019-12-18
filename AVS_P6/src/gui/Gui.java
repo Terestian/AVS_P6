@@ -32,12 +32,13 @@ public class Gui {
 
     private static void addWorker(final int i, Kraftwerk kw, JFrame frame){
         final JLabel label = new JLabel ("0");
+        
         JButton start = new JButton ("Start " + (i+1));
         start.addActionListener (new ActionListener()
             {
                 public void actionPerformed (ActionEvent action)
                 {
-                    worker[i] = new WorkerThread(label);
+                    worker[i] = new WorkerThread(label, kw);
                     worker[i].execute();
                 }
             });
