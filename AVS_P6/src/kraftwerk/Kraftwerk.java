@@ -1,8 +1,5 @@
 package kraftwerk;
 
-import java.lang.Math;
-
-
 public class Kraftwerk
 {
 	private double gesamtLeistung, nennleistung, leistung;

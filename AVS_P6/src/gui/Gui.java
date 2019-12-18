@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.*;
 
+import kraftwerk.Kraftwerk;
 import workerThread.WorkerThread;
 
 import java.awt.GridLayout;
@@ -14,7 +15,7 @@ public class Gui {
 
     public static void main (String[] args)
     {
-        createGUI();
+    	createGUI();
     }
 
     private static void createGUI()
@@ -22,14 +23,14 @@ public class Gui {
         JFrame frame = new JFrame ("Einsatz eines Worker-Threads");
         frame.setLayout (new GridLayout(N,3));
         for(int i=0; i<N; i++){
-            addWorker(i, frame);
+            addWorker(i, new Kraftwerk("A", "B", "c", 1000.0), frame);
         }
         frame.setSize (400, 100);
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.setVisible (true);
     }
 
-    private static void addWorker(final int i, JFrame frame){
+    private static void addWorker(final int i, Kraftwerk kw, JFrame frame){
         final JLabel label = new JLabel ("0");
         JButton start = new JButton ("Start " + (i+1));
         start.addActionListener (new ActionListener()

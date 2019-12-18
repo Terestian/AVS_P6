@@ -1,5 +1,6 @@
 package workerThread;
 import java.util.List;
+import java.lang.Math;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 
@@ -36,7 +37,7 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
         // Für jedes einzelne Zwischenergebnis aus der Liste.
         for (Integer zwischenergebnis : zwischenergebnisse)
         {
-            label.setText (zwischenergebnis.toString());
+            label.setText(zwischenergebnis.toString());
             
         }
     }
