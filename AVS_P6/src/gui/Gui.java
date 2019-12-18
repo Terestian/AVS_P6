@@ -9,8 +9,9 @@ import java.awt.event.*;
 import java.util.*;
 
 public class Gui {
-	private static final int N=2;
-    
+	private static final int N=5;
+	private static Kraftwerk kw;
+	private static KraftwerkPanel kwp;
 
     public static void main (String[] args)
     {
@@ -21,18 +22,15 @@ public class Gui {
     {
         JFrame frame = new JFrame ("Einsatz eines Worker-Threads");
         frame.setLayout (new GridLayout(N,3));
-        /*for(int i=0; i<N; i++){
-            addKraftwerk(i, new Kraftwerk("A", "B", "c", 1000), frame);
-        }*/
-        Kraftwerk kw = new Kraftwerk("A", "B", "c", 1000);
-        KraftwerkPanel kwp = new KraftwerkPanel(kw);
-        frame.add(kwp);
-        frame.setSize (400, 400);
+        
+        for (int i = 0; i < N; i++) {
+        	kwp = new KraftwerkPanel();
+        	Kraftwerk kw = new Kraftwerk("HAW " + i, "Hamburg", "AKW", 1000.0, kwp);
+            frame.add(kwp);
+		}
+        frame.setSize (400, 700);
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.setVisible (true);
     }
 
-    /*private static void addKraftwerk(final int i, Kraftwerk kw, JFrame frame){
-        
-    }*/
 }

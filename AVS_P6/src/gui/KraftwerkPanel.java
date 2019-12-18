@@ -13,15 +13,18 @@ import kraftwerk.Kraftwerk;
 
 public class KraftwerkPanel extends JPanel {
 
+	private JLabel lblName;
+	private JLabel lblStandort;
+	private JLabel lblKraftwerkType; 
 	private JLabel lblLeistung;
-	private JLabel lblComLeistung; 
-	private Kraftwerk kw;
+	private JLabel lblErzEnergie; 
+	private JLabel lblNennleistung;
 	/**
 	 * Create the panel.
 	 * @throws RemoteException 
 	 */
-	public KraftwerkPanel(Kraftwerk kw) {
-		this.kw = kw;
+	public KraftwerkPanel() {
+
 		setBorder(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
@@ -38,7 +41,7 @@ public class KraftwerkPanel extends JPanel {
 		gbc_blblName.gridy = 0;
 		add(blblName, gbc_blblName);
 		
-		JLabel lblName = new JLabel(this.kw.getName());
+		lblName = new JLabel();
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
 		gbc_lblName.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblName.insets = new Insets(0, 0, 5, 5);
@@ -54,7 +57,7 @@ public class KraftwerkPanel extends JPanel {
 		gbc_blblStandort.gridy = 1;
 		add(blblStandort, gbc_blblStandort);
 		
-		JLabel lblStandort = new JLabel(this.kw.getStandort());
+		lblStandort = new JLabel();
 		GridBagConstraints gbc_lblStandort = new GridBagConstraints();
 		gbc_lblStandort.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblStandort.insets = new Insets(0, 0, 5, 5);
@@ -62,51 +65,70 @@ public class KraftwerkPanel extends JPanel {
 		gbc_lblStandort.gridy = 1;
 		add(lblStandort, gbc_lblStandort);
 		
+		JLabel blblKraftwerkType = new JLabel("Kraftwerktyp:");
+		GridBagConstraints gbc_blblKraftwerkType = new GridBagConstraints();
+		gbc_blblKraftwerkType.anchor = GridBagConstraints.NORTHWEST;
+		gbc_blblKraftwerkType.insets = new Insets(0, 0, 5, 5);
+		gbc_blblKraftwerkType.gridx = 0;
+		gbc_blblKraftwerkType.gridy = 2;
+		add(blblKraftwerkType, gbc_blblKraftwerkType);
+		
+		lblKraftwerkType = new JLabel();
+		GridBagConstraints gbc_lblKraftwerkType = new GridBagConstraints();
+		gbc_lblKraftwerkType.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblKraftwerkType.insets = new Insets(0, 0, 5, 5);
+		gbc_lblKraftwerkType.gridx = 1;
+		gbc_lblKraftwerkType.gridy = 2;
+		add(lblKraftwerkType, gbc_lblKraftwerkType);
+		
+		
 		JLabel blblMomentanleistung = new JLabel("Momentanleistung:");
 		GridBagConstraints gbc_blblMomentanleistung = new GridBagConstraints();
 		gbc_blblMomentanleistung.insets = new Insets(0, 0, 5, 5);
 		gbc_blblMomentanleistung.anchor = GridBagConstraints.NORTHWEST;
 		gbc_blblMomentanleistung.gridx = 0;
-		gbc_blblMomentanleistung.gridy = 2;
+		gbc_blblMomentanleistung.gridy = 3;
 		add(blblMomentanleistung, gbc_blblMomentanleistung);
 		
-		lblLeistung = new JLabel("");
+		lblLeistung = new JLabel();
 		GridBagConstraints gbc_lblLeistung = new GridBagConstraints();
 		gbc_lblLeistung.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblLeistung.insets = new Insets(0, 0, 5, 5);
 		gbc_lblLeistung.gridx = 1;
-		gbc_lblLeistung.gridy = 2;
+		gbc_lblLeistung.gridy = 3;
 		add(lblLeistung, gbc_lblLeistung);
 		
 		JLabel blblKw1 = new JLabel("kW");
 		GridBagConstraints gbc_blblKw1 = new GridBagConstraints();
 		gbc_blblKw1.insets = new Insets(0, 0, 5, 0);
+		gbc_blblKw1.anchor = GridBagConstraints.NORTHWEST;
 		gbc_blblKw1.gridx = 2;
-		gbc_blblKw1.gridy = 2;
+		gbc_blblKw1.gridy = 3;
 		add(blblKw1, gbc_blblKw1);
 		
-		JLabel blblComleistung = new JLabel("Commulierte Leistung:");
+		JLabel blblComleistung = new JLabel("Erzeugte Energie:");
 		GridBagConstraints gbc_blblComleistung = new GridBagConstraints();
 		gbc_blblComleistung.insets = new Insets(0, 0, 5, 5);
 		gbc_blblComleistung.anchor = GridBagConstraints.NORTHWEST;
 		gbc_blblComleistung.gridx = 0;
-		gbc_blblComleistung.gridy = 3;
+		gbc_blblComleistung.gridy = 4;
 		add(blblComleistung, gbc_blblComleistung);
 		
-		lblComLeistung = new JLabel("");
-		GridBagConstraints gbc_lblComLeistung = new GridBagConstraints();
-		gbc_lblComLeistung.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lblComLeistung.insets = new Insets(0, 0, 5, 5);
-		gbc_lblComLeistung.gridx = 1;
-		gbc_lblComLeistung.gridy = 3;
-		add(lblComLeistung, gbc_lblComLeistung);
+		lblErzEnergie = new JLabel();
+		GridBagConstraints gbc_lblErzEnergie = new GridBagConstraints();
+		gbc_lblErzEnergie.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblErzEnergie.insets = new Insets(0, 0, 5, 5);
+		gbc_lblErzEnergie.gridx = 1;
+		gbc_lblErzEnergie.gridy = 4;
+		add(lblErzEnergie, gbc_lblErzEnergie);
 		
-		JLabel blblKw2 = new JLabel("kW");
+		JLabel blblKw2 = new JLabel("kWh");
 		GridBagConstraints gbc_blblKw2 = new GridBagConstraints();
-		gbc_blblKw1.insets = new Insets(0, 0, 5, 0);
-		gbc_blblKw1.gridx = 2;
-		gbc_blblKw1.gridy = 3;
-		add(blblKw1, gbc_blblKw1);
+		gbc_blblKw2.anchor = GridBagConstraints.NORTHWEST;
+		gbc_blblKw2.insets = new Insets(0, 0, 5, 0);
+		gbc_blblKw2.gridx = 2;
+		gbc_blblKw2.gridy = 4;
+		add(blblKw2, gbc_blblKw2);
 		
 		
 		JLabel blblNennleistung = new JLabel("Nennleistung:");
@@ -114,30 +136,40 @@ public class KraftwerkPanel extends JPanel {
 		gbc_blblNennleistung.anchor = GridBagConstraints.NORTHWEST;
 		gbc_blblNennleistung.insets = new Insets(0, 0, 5, 5);
 		gbc_blblNennleistung.gridx = 0;
-		gbc_blblNennleistung.gridy = 4;
+		gbc_blblNennleistung.gridy = 5;
 		add(blblNennleistung, gbc_blblNennleistung);
 		
-		JLabel lblNennleistung = new JLabel(this.kw.getNennleistungOn()+"");
+		lblNennleistung = new JLabel();
 		GridBagConstraints gbc_lblNennleistung = new GridBagConstraints();
 		gbc_lblNennleistung.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblNennleistung.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNennleistung.gridx = 1;
-		gbc_lblNennleistung.gridy = 4;
+		gbc_lblNennleistung.gridy = 5;
 		add(lblNennleistung, gbc_lblNennleistung);
 		
 		JLabel blblKw3 = new JLabel("kW");
 		GridBagConstraints gbc_blblKw3 = new GridBagConstraints();
-		gbc_blblKw2.insets = new Insets(0, 0, 5, 0);
-		gbc_blblKw2.gridx = 2;
-		gbc_blblKw2.gridy = 4;
-		add(blblKw2, gbc_blblKw2);
-		
-		JLabel lblDELETEME = new JLabel(" ");
-		GridBagConstraints gbc_lblDELETEME = new GridBagConstraints();
-		gbc_lblDELETEME.insets = new Insets(0, 0, 0, 5);
-		gbc_lblDELETEME.gridx = 0;
-		gbc_lblDELETEME.gridy = 5;
-		add(lblDELETEME, gbc_lblDELETEME);
+		gbc_blblKw3.insets = new Insets(0, 0, 5, 0);
+		gbc_blblKw3.anchor = GridBagConstraints.NORTHWEST;
+		gbc_blblKw3.gridx = 2;
+		gbc_blblKw3.gridy = 5;
+		add(blblKw3, gbc_blblKw3);
+
+	}
+	
+	public void setName(String name)
+	{
+		lblName.setText(name);
+	}
+	
+	public void setStandort(String standort)
+	{
+		lblStandort.setText(standort);
+	}
+	
+	public void setKraftwerkType(String kraftwerktype)
+	{
+		lblKraftwerkType.setText(kraftwerktype);
 	}
 	
 	public void setLeistung(String leistung)
@@ -145,8 +177,14 @@ public class KraftwerkPanel extends JPanel {
 		lblLeistung.setText(leistung);
 	}
 	
-	public void setEnergieErzeugt(String comLeistung)
+	public void setEnergieErzeugt(String erzEnergie)
 	{
-		lblComLeistung.setText(comLeistung);
+		lblErzEnergie.setText(erzEnergie);
 	}
+	
+	public void setNennleistung(String nennleistung)
+	{
+		lblNennleistung.setText(nennleistung);
+	}
+	
 }

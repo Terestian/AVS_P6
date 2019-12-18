@@ -6,24 +6,28 @@ import javax.swing.SwingWorker;
 
 import gui.KraftwerkPanel;
 
-public class Kraftwerk extends SwingWorker<Integer, Double[]>
+public class Kraftwerk extends SwingWorker<Integer, double[]>
 {
 	private KraftwerkPanel kwp;
-	private Double gesamtLeistung, nennleistung, leistung;
+	private double gesamtLeistung, nennleistung, leistung = 0.0;
 	private String name, standort, kraftwerktype;
+	private double values[] = new double[2];
 
-	public Kraftwerk(String name, String standort, String kraftwerktype, Double nennleistung){
+	public Kraftwerk(String name, String standort, String kraftwerktype, double nennleistung, KraftwerkPanel kwp){
 		
 		this.name = name; 
 		this.standort = standort;
 		this.kraftwerktype = kraftwerktype;
 		this.nennleistung = nennleistung;
-       
-		leistung = 0.0;
+		this.kwp = kwp;
 		this.execute();
+		kwp.setName(this.name);
+		kwp.setStandort(this.standort);
+		kwp.setKraftwerkType(this.kraftwerktype);
+		kwp.setNennleistung(this.nennleistung+"");
 	}
 	
-	public Double getEnergieErzeugt(){
+	public double getEnergieErzeugt(){
 		return gesamtLeistung;
 	}
 	
@@ -32,13 +36,13 @@ public class Kraftwerk extends SwingWorker<Integer, Double[]>
 	* @return Nennleistung in MW, 0 falls ausgeschaltet
 	*/
 	
-	public Double getNennleistungOn(){
+	public double getNennleistungOn(){
 		return nennleistung;
 	}
 	
 	public void setLeistung(Double leistung) {
-		this.leistung = leistung;
-		gesamtLeistung = leistung + gesamtLeistung;
+		this.leistung = (Math.round(leistung * 100) / 100) ;
+		gesamtLeistung += this.leistung;
 	}
 	
 	/**
@@ -62,9 +66,10 @@ public class Kraftwerk extends SwingWorker<Integer, Double[]>
 	* @return Leistung in MW, 0 falls ausgeschaltet
 	*/
 	
-	public Double getLeistung(){
+	public double getLeistung(){
 		return leistung;
 	}
+	
 	
 	/**
 	 * Methode getStandort
@@ -90,7 +95,7 @@ public class Kraftwerk extends SwingWorker<Integer, Double[]>
             {
             	
             }
-            Double values[] = new Double[2];
+            
             // Zwischenergebnis bereitstellen.
             setLeistung((((10 - Math.random()) / 10) * nennleistung));
             values[0] = getLeistung();
@@ -102,11 +107,12 @@ public class Kraftwerk extends SwingWorker<Integer, Double[]>
 
 	
     // Wird vom Event-Dispatch-Thread aufgerufen.
-    protected void process (List<Double[]> currentPower)
+    protected void process (List<double[]> powerData)
     {
         // Für jedes einzelne Zwischenergebnis aus der Liste.
-    	for (Double[] cp : currentPower) {
-    		kwp.setLeistung(cp[0].toString());
+    	for (double[] pd : powerData) {
+    		kwp.setLeistung(pd[0]+"");
+    		kwp.setEnergieErzeugt(pd[1]+"");
 		}
     }
 	
