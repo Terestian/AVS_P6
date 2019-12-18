@@ -1,5 +1,10 @@
 package Gui;
 
+import javax.swing.*;
+import java.awt.GridLayout;
+import java.awt.event.*;
+import java.util.*;
+
 public class Gui {
 	private static final int N=5;
     private static SwingWorker[] worker= new SwingWorker[N];
