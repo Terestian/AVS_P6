@@ -6,7 +6,7 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
 	private JLabel label;
     public WorkerThread (JLabel label)
     {
-        this.label = label;
+    	this.label = label;
     }
 
     @Override
@@ -15,7 +15,7 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
         int counter = 0;
         while (counter < 100 && !isCancelled())
         {
-            // Zeitintensive Aufgabe simulieren.
+            // Zeitintensive Aufgabe simulieren
             try
             {
                 Thread.sleep (100);
