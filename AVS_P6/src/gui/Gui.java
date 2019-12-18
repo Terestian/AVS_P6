@@ -1,4 +1,4 @@
-package Gui;
+package gui;
 
 import javax.swing.*;
 import java.awt.GridLayout;
@@ -33,7 +33,7 @@ public class Gui {
             {
                 public void actionPerformed (ActionEvent action)
                 {
-                    worker[i] = new WorkerThread (label);
+                    worker[i] = new WorkerThread(label);
                     worker[i].execute();
                 }
             });
