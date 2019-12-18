@@ -1,7 +1,15 @@
 package kraftwerk;
 
-public class Kraftwerk
+import java.util.List;
+
+import javax.swing.SwingWorker;
+
+import gui.KraftwerkPanel;
+
+public class Kraftwerk extends SwingWorker<Integer, Integer>
 {
+	private KraftwerkPanel kwp;
+	private Kraftwerk kw; 
 	private int gesamtLeistung, nennleistung, leistung;
 	private String name, standort, kraftwerktype;
 
@@ -11,6 +19,7 @@ public class Kraftwerk
 		this.standort = standort;
 		this.kraftwerktype = kraftwerktype;
 		this.nennleistung = nennleistung;
+        this.execute();
 		leistung = 0;
 	
 	}
@@ -66,5 +75,37 @@ public class Kraftwerk
 	public String getStandort() {
 		return standort;
 	}
+	
+    @Override
+    public Integer doInBackground()
+    {
+        int counter = 0;
+        while (counter < 100 && !isCancelled())
+        {
+            // Zeitintensive Aufgabe simulieren
+            try
+            {
+                Thread.sleep (100);
+            }
+            catch (InterruptedException ex)
+            {
+            	
+            }
+            // Zwischenergebnis bereitstellen.
+            kw.setLeistung( (int) (((10 - Math.random()) / 10) * kw.getNennleistungOn()));
+            publish (kw.getLeistung());
+        }
+        return counter;
+    }
+
+	
+    // Wird vom Event-Dispatch-Thread aufgerufen.
+    protected void process (List<Integer> currentPower)
+    {
+        // Für jedes einzelne Zwischenergebnis aus der Liste.
+    	for (Integer cp : currentPower) {
+    		kwp.setLeistung(cp.toString());
+		}
+    }
 	
 }
