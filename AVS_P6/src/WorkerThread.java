@@ -22,6 +22,7 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
             }
             catch (InterruptedException ex)
             {
+            	
             }
             // Zwischenergebnis bereitstellen.
             publish (++counter);
