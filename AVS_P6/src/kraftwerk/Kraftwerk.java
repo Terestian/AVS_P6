@@ -15,7 +15,7 @@ public class Kraftwerk
 	
 	}
 	
-	public int energieErzeugt(){
+	public int getEnergieErzeugt(){
 		return gesamtLeistung;
 	}
 	

@@ -1,16 +1,15 @@
 package workerThread;
 import java.util.List;
 import java.lang.Math;
-import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 
 import gui.KraftwerkPanel;
 import kraftwerk.Kraftwerk;
 
-public class WorkerThread extends SwingWorker<Integer, Integer>{
+public class WorkerComPower extends SwingWorker<Integer, Integer>{
 	private KraftwerkPanel kwp;
 	private Kraftwerk kw; 
-    public WorkerThread (KraftwerkPanel kwp, Kraftwerk kw)
+    public WorkerComPower (KraftwerkPanel kwp, Kraftwerk kw)
     {
     	this.kwp = kwp;
     	this.kw = kw;  
@@ -32,17 +31,16 @@ public class WorkerThread extends SwingWorker<Integer, Integer>{
             	
             }
             // Zwischenergebnis bereitstellen.
-            kw.setLeistung( (int) (Math.random() * kw.getNennleistungOn()));
-            publish (kw.getLeistung());
+            publish (kw.getEnergieErzeugt());
         }
         return counter;
     }
     // Wird vom Event-Dispatch-Thread aufgerufen.
-    protected void process (List<Integer> currentPower)
+    protected void process (List<Integer> energieErzeugt)
     {
         // Für jedes einzelne Zwischenergebnis aus der Liste.
-    	for (Integer cp : currentPower) {
-    		kwp.setLeistung(cp.toString());
+    	for (Integer ee : energieErzeugt) {
+    		kwp.setEnergieErzeugt(ee.toString());
 		}
     }
 }
